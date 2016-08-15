@@ -1,0 +1,40 @@
+{
+  "name": "ut-port-jsonrpc",
+  "version": "5.4.0",
+  "main": "./index.js",
+  "dependencies": {
+    "ut-error": "^5.3.12",
+    "ut-port-http": "~6.1.4"
+  },
+  "devDependencies": {
+    "ut-tools": "^5.7.1"
+  },
+  "peerDependencies": {
+    "ut-bus": "~5.4.7"
+  },
+  "description": "UT port rpc module",
+  "scripts": {
+    "lint": "ut-lint .",
+    "release": "ut-release",
+    "changelog": "ut-changelog",
+    "check": "ut-check",
+    "cover": "ut-cover",
+    "lint-js": "ut-lint-js .",
+    "postpublish": "ut-postpublish",
+    "postversion": "ut-postversion",
+    "precommit": "ut-precommit",
+    "prepublish": "ut-prepublish",
+    "prepush": "ut-prepush",
+    "pretest": "ut-pretest",
+    "preversion": "ut-preversion",
+    "test": "ut-test",
+    "version": "ut-version",
+    "jenkins": "ut-jenkins",
+    "gitlab": "ut-gitlab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:softwaregroup-bg/ut-port-jsonrpc.git"
+  },
+  "license": "Apache-2.0"
+}
