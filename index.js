@@ -11,13 +11,18 @@ module.exports = {
     parseResponse: false,
     requestTimeout: 300000,
     receive: function(msg, $meta) {
-        if (msg && msg.payload && msg.payload.result) {
-            return msg.payload.result;
-        } else if (msg && msg.payload && msg.payload.error) {
-            return Promise.reject(errors.generic(msg.payload.error));
-        } else {
-            return Promise.reject(errors.generic(msg));
+        if ($meta.mtid === 'error') {
+            return msg;
         }
+        if (msg && msg.payload) {
+            if (msg.payload.result) {
+                return msg.payload.result;
+            } else if (msg.payload.error) {
+                throw msg.payload.error;
+            }
+            throw errors.wrongJsonRpcFormat(msg);
+        }
+        throw errors.generic(msg);
     },
     send: function(msg, $meta) {
         var result = {
@@ -29,7 +34,7 @@ module.exports = {
                 params: msg
             }
         };
-        if ($meta.method === 'identity.check' && !result.uri) {
+        if ($meta.method === 'identity.check' && !msg.uri) {
             result.uri = '/login';
         }
         return result;
