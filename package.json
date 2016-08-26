@@ -4,7 +4,7 @@
   "main": "./index.js",
   "dependencies": {
     "ut-error": "^5.3.12",
-    "ut-port-http": "~6.1.4"
+    "ut-port-http": "~6.2.0"
   },
   "devDependencies": {
     "ut-tools": "^5.7.1"
