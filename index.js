@@ -1,6 +1,6 @@
 var HttpPort = require('ut-port-http');
 var util = require('util');
-var errors = require('./errors.js');
+var errors = require('./errors');
 
 function JsonRpcPort() {
     HttpPort.call(this);
@@ -22,7 +22,7 @@ function JsonRpcPort() {
                 if (msg.payload.result) {
                     return msg.payload.result;
                 } else if (msg.payload.error) {
-                    throw msg.payload.error;
+                    throw errors.rpc(msg.payload.error);
                 }
                 throw errors.wrongJsonRpcFormat(msg);
             }
