@@ -1,3 +1,13 @@
+<a name="5.5.5"></a>
+## [5.5.5](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.4...v5.5.5) (2016-10-12)
+
+
+### Bug Fixes
+
+* delete msg.uri before sending message from ut-port-jsonrpc so that user can be logged in to another http server ([b479fae](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/b479fae))
+
+
+
 <a name="5.5.4"></a>
 ## [5.5.4](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.3...v5.5.4) (2016-10-11)
 
