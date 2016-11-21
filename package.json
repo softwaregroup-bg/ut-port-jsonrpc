@@ -3,14 +3,14 @@
   "version": "5.5.6",
   "main": "./index.js",
   "dependencies": {
-    "ut-error": "^5.3.15",
-    "ut-port-http": "^6.3.8"
+    "ut-error": "^5.3.16",
+    "ut-port-http": "^6.3.12"
   },
   "devDependencies": {
-    "ut-tools": "^5.9.6"
+    "ut-tools": "^5.10.7"
   },
   "peerDependencies": {
-    "ut-bus": "~5.4.14"
+    "ut-bus": "~5.6.1"
   },
   "description": "UT port rpc module",
   "scripts": {
