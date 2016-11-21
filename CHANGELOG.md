@@ -1,3 +1,13 @@
+<a name="5.5.7"></a>
+## [5.5.7](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.6...v5.5.7) (2016-11-21)
+
+
+### Bug Fixes
+
+* update dependencies ([7c24146](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/7c24146))
+
+
+
 <a name="5.5.6"></a>
 ## [5.5.6](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.5...v5.5.6) (2016-11-01)
 
