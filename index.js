@@ -1,10 +1,13 @@
 var HttpPort = require('ut-port-http');
 var util = require('util');
 var errors = require('./errors');
+var _ = {
+    merge: require('lodash.merge')
+};
 
 function JsonRpcPort() {
     HttpPort.call(this);
-    this.config = {
+    _.merge(this.config, {
         id: 'jsonrpc',
         url: global.window && global.window.location.origin,
         raw: {
@@ -44,7 +47,7 @@ function JsonRpcPort() {
             delete msg.uri;
             return result;
         }
-    };
+    });
 }
 
 util.inherits(JsonRpcPort, HttpPort);
