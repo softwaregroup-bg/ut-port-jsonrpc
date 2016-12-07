@@ -1,3 +1,8 @@
+<a name="5.5.9"></a>
+## [5.5.9](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.8...v5.5.9) (2016-12-07)
+
+
+
 <a name="5.5.8"></a>
 ## [5.5.8](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.7...v5.5.8) (2016-12-07)
 
