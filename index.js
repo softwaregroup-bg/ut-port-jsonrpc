@@ -20,6 +20,9 @@ function JsonRpcPort() {
             }
             if (msg && msg.payload) {
                 if (msg.payload.result) {
+                    if (msg.payload.id == null) {
+                        $meta.mtid = 'discard';
+                    }
                     return msg.payload.result;
                 } else if (msg.payload.error) {
                     throw errors.rpc(msg.payload.error);
@@ -32,7 +35,7 @@ function JsonRpcPort() {
             var result = {
                 uri: (msg && msg.uri) || `/rpc/${$meta.method}`,
                 payload: {
-                    id: 1,
+                    id: ($meta.mtid === 'request') ? 1 : null,
                     jsonrpc: '2.0',
                     method: $meta.method,
                     params: msg
