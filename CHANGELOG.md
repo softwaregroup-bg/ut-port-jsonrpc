@@ -1,3 +1,13 @@
+<a name="5.5.10"></a>
+## [5.5.10](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.9...v5.5.10) (2016-12-19)
+
+
+### Bug Fixes
+
+* proper handling of notifications ([0891573](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/0891573))
+
+
+
 <a name="5.5.9"></a>
 ## [5.5.9](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.8...v5.5.9) (2016-12-07)
 
