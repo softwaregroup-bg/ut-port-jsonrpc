@@ -1,13 +1,9 @@
 var create = require('ut-error').define;
 
-var RPC = create('PortRPC');
-var Generic = create('Generic', RPC);
-var WrongJsonRpcFormat = create('WrongJsonRpcFormat', RPC);
+var Generic = create('PortRPC');
+var WrongJsonRpcFormat = create('WrongJsonRpcFormat', Generic);
 
 module.exports = {
-    rpc: function(cause) {
-        return new RPC(cause);
-    },
     generic: function(cause) {
         return new Generic(cause);
     },

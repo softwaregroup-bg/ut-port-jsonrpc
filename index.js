@@ -28,7 +28,7 @@ function JsonRpcPort() {
                     }
                     return msg.payload.result;
                 } else if (msg.payload.error) {
-                    throw errors.rpc(msg.payload.error);
+                    throw Object.assign(new Error(), msg.payload.error);
                 }
                 throw errors.wrongJsonRpcFormat(msg);
             }
