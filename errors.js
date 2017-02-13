@@ -7,7 +7,8 @@ var WrongJsonRpcFormat = create('WrongJsonRpcFormat', RPC);
 
 module.exports = {
     rpc: function(cause) {
-        return cause && cause.type && utError.get(cause.type)(cause) || new RPC(cause);
+        var error = cause && cause.type && utError.get(cause.type);
+        return (error && error(cause)) || new RPC(cause);
     },
     generic: function(cause) {
         return new Generic(cause);
