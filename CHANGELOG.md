@@ -1,3 +1,13 @@
+<a name="5.5.13"></a>
+## [5.5.13](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.12...v5.5.13) (2017-02-13)
+
+
+### Bug Fixes
+
+* handle unknown error case ([f48ce12](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/f48ce12))
+
+
+
 <a name="5.5.12"></a>
 ## [5.5.12](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.11...v5.5.12) (2017-02-09)
 
