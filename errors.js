@@ -8,11 +8,11 @@ var plainError = cause => Object.assign(new Error(), cause);
 
 module.exports = {
     rpc: function(cause) {
-        var method = RPC;
+        var error = RPC;
         if (cause && cause.type) {
-            method = utError.get(cause.type) || plainError;
+            error = utError.get(cause.type) || plainError;
         }
-        return method(cause);
+        return error(cause);
     },
     generic: function(cause) {
         return new Generic(cause);
