@@ -1,6 +1,6 @@
 # UT Port JSON RPC
 
-Provides standard JSON-RPC over HTTP implementation
+Provides standard JSON-RPC over HTTP implementation, this ports inherits and extends ut-port-http
 
 Main purpose of this module is to move all repeatable code out of implementation, for instance, checking response or creating request.
 
