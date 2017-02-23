@@ -2,44 +2,38 @@
 
 Provides standard JSON-RPC over HTTP implementation, this ports inherits and extends ut-port-http
 
-Main purpose of this module is to move all repeatable code out of implementation, for instance, checking response or creating request.
+This port allows easy calling of remote procedures exposed on remote HTTP server.
 
-examples:
-if you send following message to this port:
+If the port works in namespace `a`, calling
 ```javascript
-{a: 'foo', b: 'bar'}
+bus.importMethod('a.b.c')({a: 'foo', b: 'bar'})
 ```
-with method `a.b.c`
-it will get translated to
+
+will send standard json-rpc request to the remote server:
 ```javascript
 {
   "id": "1",
   "jsonrpc": "2.0",
   "method": "a.b.c",
-  "params": {a: 'foo', b: 'bar'}
+  "params": {"a": 'foo', "b": "bar"}
 }
 ```
-params will be `msg` and method will be the method that you are calling.
 
-Response follows same logic, if you usually receive response like:
+If HTTP returns response like:
 
 ```javascript
 {
   "jsonrpc": "2.0",
   "id": "1",
-  "result": [
-    {
-      "a": "foo",
-      "b": "bar"
-    }
-  ]
+  "result": {
+      "c": "baz"
+  }
 }
 ```
-real response from this module will look like:
 
+Response from the bus.importMethod()() will be:
 ```javascript
 {
-    "a": "foo",
-    "b": "bar"
+    "c": "baz"
 }
 ```
