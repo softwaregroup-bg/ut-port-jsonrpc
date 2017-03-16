@@ -7,10 +7,10 @@
     "lodash.merge": "4.6.0"
   },
   "devDependencies": {
+    "ut-port-http": "^6.4.1",
     "ut-tools": "^5.13.5"
   },
   "peerDependencies": {
-    "ut-port-http": "^6.4.1",
     "ut-bus": "^5.9.0"
   },
   "description": "UT port rpc module",
