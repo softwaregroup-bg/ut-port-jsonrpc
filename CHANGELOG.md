@@ -1,3 +1,18 @@
+<a name="5.6.0"></a>
+# [5.6.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.16...v5.6.0) (2017-03-16)
+
+
+### Bug Fixes
+
+* use generic rpc error ([769df45](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/769df45))
+
+
+### Features
+
+* always preserve json-rpc errors ([#4](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/4)) ([abdee22](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/abdee22))
+
+
+
 <a name="5.5.16"></a>
 ## [5.5.16](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.15...v5.5.16) (2017-03-16)
 
