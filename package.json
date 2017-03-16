@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "5.5.15",
+  "version": "5.5.16",
   "main": "./index.js",
   "dependencies": {
     "ut-error": "^5.4.0",

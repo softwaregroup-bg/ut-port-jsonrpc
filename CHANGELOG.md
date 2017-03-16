@@ -1,3 +1,13 @@
+<a name="5.5.16"></a>
+## [5.5.16](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.15...v5.5.16) (2017-03-16)
+
+
+### Bug Fixes
+
+* move dependency to ut-port-http from peerDependencies to dependencies as it is directly required in index.js ([#6](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/6)) ([0f0d57e](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/0f0d57e))
+
+
+
 <a name="5.5.15"></a>
 ## [5.5.15](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.14...v5.5.15) (2017-03-08)
 
