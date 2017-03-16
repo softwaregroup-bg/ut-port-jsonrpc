@@ -4,11 +4,15 @@ var create = utError.define;
 var RPC = create('PortRPC');
 var Generic = create('Generic', RPC);
 var WrongJsonRpcFormat = create('WrongJsonRpcFormat', RPC);
+var plainError = cause => Object.assign(new Error(), cause);
 
 module.exports = {
     rpc: function(cause) {
-        var error = cause && cause.type && utError.get(cause.type);
-        return (error && error(cause)) || new RPC(cause);
+        var error = RPC;
+        if (cause && cause.type) {
+            error = utError.get(cause.type) || plainError;
+        }
+        return error(cause);
     },
     generic: function(cause) {
         return new Generic(cause);
