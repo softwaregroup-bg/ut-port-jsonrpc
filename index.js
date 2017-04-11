@@ -1,6 +1,7 @@
 var HttpPort = require('ut-port-http');
 var util = require('util');
 var errors = require('./errors');
+var requestId = 1;
 var _ = {
     merge: require('lodash.merge')
 };
@@ -38,13 +39,13 @@ function JsonRpcPort() {
             var result = {
                 uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                 payload: {
-                    id: ($meta.mtid === 'request') ? 1 : null,
+                    id: ($meta.mtid === 'request') ? requestId++ : null,
                     jsonrpc: '2.0',
                     method: $meta.method,
                     params: msg
                 }
             };
-            if ($meta.method === 'identity.check' && !msg.uri) {
+            if ($meta.method === 'identity.check' && !result.uri) {
                 result.uri = '/login';
             }
             delete msg.uri;
