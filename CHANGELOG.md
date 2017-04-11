@@ -1,3 +1,13 @@
+<a name="5.6.2"></a>
+## [5.6.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.1...v5.6.2) (2017-04-11)
+
+
+### Bug Fixes
+
+* uri check ([fa081af](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/fa081af))
+
+
+
 <a name="5.6.1"></a>
 ## [5.6.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.0...v5.6.1) (2017-04-11)
 
