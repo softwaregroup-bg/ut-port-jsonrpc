@@ -48,7 +48,6 @@ function JsonRpcPort() {
             if ($meta.method === 'identity.check' && !result.uri) {
                 result.uri = '/login';
             }
-            delete msg.uri;
             return result;
         }
     });
