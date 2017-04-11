@@ -36,7 +36,7 @@ function JsonRpcPort() {
         },
         send: function(msg, $meta) {
             var result = {
-                uri: (msg && msg.uri) || `/rpc/${$meta.method}`,
+                uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                 payload: {
                     id: ($meta.mtid === 'request') ? 1 : null,
                     jsonrpc: '2.0',
