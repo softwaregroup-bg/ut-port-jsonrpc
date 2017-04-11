@@ -1,3 +1,13 @@
+<a name="5.6.1"></a>
+## [5.6.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.0...v5.6.1) (2017-04-11)
+
+
+### Bug Fixes
+
+* escape / in method ([03b1e81](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/03b1e81))
+
+
+
 <a name="5.6.0"></a>
 # [5.6.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.5.16...v5.6.0) (2017-03-16)
 
