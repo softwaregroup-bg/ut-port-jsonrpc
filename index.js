@@ -1,14 +1,15 @@
 var HttpPort = require('ut-port-http');
 var util = require('util');
 var errors = require('./errors');
-var requestId = 1;
 var _ = {
     merge: require('lodash.merge')
 };
 
 function JsonRpcPort() {
     HttpPort.call(this);
-    _.merge(this.config, {
+    var requestId = 1;
+
+    this.config = _.merge(this.config, {
         id: 'jsonrpc',
         url: global.window && global.window.location.origin,
         raw: {
@@ -45,8 +46,8 @@ function JsonRpcPort() {
                     params: msg
                 }
             };
-            if ($meta.method === 'identity.check' && !result.uri) {
-                result.uri = '/login';
+            if (result.payload.params && result.payload.params.uri) {
+                delete result.payload.params.uri;
             }
             return result;
         }
