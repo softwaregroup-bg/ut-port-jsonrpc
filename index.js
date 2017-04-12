@@ -48,6 +48,9 @@ function JsonRpcPort() {
             if ($meta.method === 'identity.check' && !result.uri) {
                 result.uri = '/login';
             }
+            if(result.payload.params && result.payload.params.uri) {
+                result.payload.params.uri = undefined;
+            }
             return result;
         }
     });
