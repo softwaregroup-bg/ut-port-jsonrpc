@@ -1,3 +1,13 @@
+<a name="5.6.4"></a>
+## [5.6.4](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.3...v5.6.4) (2017-04-19)
+
+
+### Bug Fixes
+
+* clean legacy ([#11](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/11)) ([d7bd259](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/d7bd259))
+
+
+
 <a name="5.6.3"></a>
 ## [5.6.3](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.2...v5.6.3) (2017-04-11)
 
