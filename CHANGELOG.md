@@ -1,3 +1,13 @@
+<a name="5.6.11"></a>
+## [5.6.11](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.10...v5.6.11) (2017-05-31)
+
+
+### Bug Fixes
+
+* pass headers if any ([#12](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/12)) ([5513a0e](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/5513a0e))
+
+
+
 <a name="5.6.10"></a>
 ## [5.6.10](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.9...v5.6.10) (2017-05-22)
 
