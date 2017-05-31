@@ -46,6 +46,10 @@ function JsonRpcPort() {
                     params: msg
                 }
             };
+            if (msg.headers) {
+                result.headers = msg.headers;
+                delete result.payload.params.headers;
+            }
             if (result.payload.params && result.payload.params.uri) {
                 delete result.payload.params.uri;
             }
