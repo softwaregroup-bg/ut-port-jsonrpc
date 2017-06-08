@@ -1,3 +1,13 @@
+<a name="5.6.12"></a>
+## [5.6.12](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.11...v5.6.12) (2017-06-08)
+
+
+### Bug Fixes
+
+* extra check ([7820b84](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/7820b84))
+
+
+
 <a name="5.6.11"></a>
 ## [5.6.11](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.10...v5.6.11) (2017-05-31)
 
