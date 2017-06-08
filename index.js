@@ -46,7 +46,7 @@ function JsonRpcPort() {
                     params: msg
                 }
             };
-            if (msg.headers) {
+            if (msg && msg.headers) {
                 result.headers = msg.headers;
                 delete result.payload.params.headers;
             }
