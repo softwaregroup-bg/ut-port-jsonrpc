@@ -1,63 +1,68 @@
-var HttpPort = require('ut-port-http');
-var util = require('util');
-var errors = require('./errors');
-var _ = {
-    merge: require('lodash.merge')
-};
+'use strict';
+const HttpPort = require('ut-port-http');
+const util = require('util');
+const errors = require('./errors');
+const merge = require('lodash.merge');
 
-function JsonRpcPort() {
-    HttpPort.call(this);
-    var requestId = 1;
+module.exports = function(...params) {
+    let parent = HttpPort(...params);
 
-    this.config = _.merge(this.config, {
-        id: 'jsonrpc',
-        url: global.window && global.window.location.origin,
-        raw: {
-            json: true,
-            jar: true,
-            strictSSL: false
-        },
-        parseResponse: false,
-        requestTimeout: 300000,
-        receive: function(msg, $meta) {
-            if ($meta.mtid === 'error') {
-                return msg;
-            }
-            if (msg && msg.payload) {
-                if (msg.payload.result) {
-                    if (msg.payload.id == null) {
-                        $meta.mtid = 'discard';
+    function JsonRpcPort() {
+        parent && parent.apply(this, params);
+        let requestId = 1;
+
+        this.config = merge(this.config, {
+            id: 'jsonrpc',
+            url: global.window && global.window.location.origin,
+            raw: {
+                json: true,
+                jar: true,
+                strictSSL: false
+            },
+            parseResponse: false,
+            requestTimeout: 300000,
+            receive: function(msg, $meta) {
+                if ($meta.mtid === 'error') {
+                    return msg;
+                }
+                if (msg && msg.payload) {
+                    if (msg.payload.result) {
+                        if (msg.payload.id == null) {
+                            $meta.mtid = 'discard';
+                        }
+                        return msg.payload.result;
+                    } else if (msg.payload.error) {
+                        throw errors.rpc(msg.payload.error);
                     }
-                    return msg.payload.result;
-                } else if (msg.payload.error) {
-                    throw errors.rpc(msg.payload.error);
+                    throw errors.wrongJsonRpcFormat(msg);
                 }
-                throw errors.wrongJsonRpcFormat(msg);
-            }
-            throw errors.generic(msg);
-        },
-        send: function(msg, $meta) {
-            var result = {
-                uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
-                payload: {
-                    id: ($meta.mtid === 'request') ? requestId++ : null,
-                    jsonrpc: '2.0',
-                    method: $meta.method,
-                    params: msg
+                throw errors.generic(msg);
+            },
+            send: function(msg, $meta) {
+                let result = {
+                    uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                    payload: {
+                        id: ($meta.mtid === 'request') ? requestId++ : null,
+                        jsonrpc: '2.0',
+                        method: $meta.method,
+                        params: msg
+                    }
+                };
+                if (msg && msg.headers) {
+                    result.headers = msg.headers;
+                    delete result.payload.params.headers;
                 }
-            };
-            if (msg && msg.headers) {
-                result.headers = msg.headers;
-                delete result.payload.params.headers;
+                if (result.payload.params && result.payload.params.uri) {
+                    delete result.payload.params.uri;
+                }
+                return result;
             }
-            if (result.payload.params && result.payload.params.uri) {
-                delete result.payload.params.uri;
-            }
-            return result;
-        }
-    });
-}
+        });
+    }
 
-util.inherits(JsonRpcPort, HttpPort);
+    if (parent) {
+        util.inherits(JsonRpcPort, parent);
+    }
 
-module.exports = JsonRpcPort;
+    return JsonRpcPort;
+};
