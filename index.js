@@ -8,7 +8,7 @@ module.exports = function(...params) {
     let parent = HttpPort(...params);
 
     function JsonRpcPort() {
-        parent && parent.apply(this, params);
+        parent && parent.apply(this, arguments);
         let requestId = 1;
 
         this.config = merge(this.config, {
