@@ -2,7 +2,7 @@
 const utError = require('ut-error');
 const create = utError.define;
 
-const RPC = create('PortRPC');
+const RPC = create('portJsonRPC');
 const Generic = create('generic', RPC);
 const plainError = cause => Object.assign(new Generic(), cause);
 
