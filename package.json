@@ -3,7 +3,6 @@
   "version": "6.0.0-ut6.1",
   "main": "./index.js",
   "dependencies": {
-    "ut-error": "^5.4.9",
     "ut-port-http": "^7.0.0-ut6.0",
     "lodash.merge": "4.6.0"
   },
