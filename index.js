@@ -1,14 +1,15 @@
 'use strict';
 const HttpPort = require('ut-port-http');
 const util = require('util');
-const errors = require('./errors');
 const merge = require('lodash.merge');
+let errors;
 
 module.exports = function(...params) {
     let parent = HttpPort(...params);
 
     function JsonRpcPort() {
         parent && parent.apply(this, arguments);
+        errors = errors || require('./errors')(this.defineError, this.getError);
         let requestId = 1;
 
         this.config = merge(this.config, {
