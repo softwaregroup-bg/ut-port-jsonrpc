@@ -36,23 +36,19 @@ function JsonRpcPort() {
             }
             throw errors.generic(msg);
         },
-        send: function(msg, $meta) {
-            var result = {
-                uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+        send: function(msg = {}, $meta) {
+            const { uri, httpMethod, headers, ...rest } = msg;
+            const result = {
+                uri: uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                httpMethod: httpMethod || 'POST',
+                headers: headers,
                 payload: {
                     id: ($meta.mtid === 'request') ? requestId++ : null,
                     jsonrpc: '2.0',
                     method: $meta.method,
-                    params: msg
+                    params: rest
                 }
             };
-            if (msg && msg.headers) {
-                result.headers = msg.headers;
-                delete result.payload.params.headers;
-            }
-            if (result.payload.params && result.payload.params.uri) {
-                delete result.payload.params.uri;
-            }
             return result;
         }
     });
