@@ -27,12 +27,12 @@ module.exports = function(...params) {
                     return msg;
                 }
                 if (msg && msg.payload) {
-                    if (msg.payload.result) {
+                    if (msg.payload.result !== undefined && msg.payload.error === undefined) {
                         if (msg.payload.id == null) {
                             $meta.mtid = 'discard';
                         }
                         return msg.payload.result;
-                    } else if (msg.payload.error) {
+                    } else if (typeof msg.payload.error === 'object') {
                         throw errors.rpc(msg.payload.error);
                     }
                     throw errors.wrongJsonRpcFormat(msg);
