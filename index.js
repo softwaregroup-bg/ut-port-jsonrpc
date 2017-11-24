@@ -39,19 +39,23 @@ module.exports = function(...params) {
                 }
                 throw errors.generic(msg);
             },
-            send: function(msg = {}, $meta) {
-                const { uri, httpMethod, headers, ...rest } = msg;
-                const result = {
-                    uri: uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
-                    httpMethod: httpMethod || 'POST',
-                    headers: headers,
+            send: function(msg, $meta) {
+                let result = {
+                    uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
                         method: $meta.method,
-                        params: rest
+                        params: msg
                     }
                 };
+                if (msg && msg.headers) {
+                    result.headers = msg.headers;
+                    delete result.payload.params.headers;
+                }
+                if (result.payload.params && result.payload.params.uri) {
+                    delete result.payload.params.uri;
+                }
                 return result;
             }
         });
