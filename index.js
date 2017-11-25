@@ -37,7 +37,14 @@ function JsonRpcPort() {
             throw errors.generic(msg);
         },
         send: function(msg = {}, $meta) {
-            const { uri, httpMethod, headers, ...rest } = msg;
+            // msg can be both [] & {}; we destructure to extract 'control' keys
+            // but can not capture ...rest as it turns the array to object
+            const { uri, httpMethod, headers } = msg;
+            if (msg) {
+                msg.uri && delete msg.uri;
+                msg.httpMethod && delete msg.httpMethod;
+                msg.headers && delete msg.headers;
+            }
             const result = {
                 uri: uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                 httpMethod: httpMethod || 'POST',
@@ -46,7 +53,7 @@ function JsonRpcPort() {
                     id: ($meta.mtid === 'request') ? requestId++ : null,
                     jsonrpc: '2.0',
                     method: $meta.method,
-                    params: rest
+                    params: msg
                 }
             };
             return result;
