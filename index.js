@@ -48,7 +48,7 @@ module.exports = function(...params) {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
                         method: $meta.method,
-                        params: Object.assign({}, msg)
+                        params: msg && Object.assign({}, msg)
                     }
                 };
                 if (msg && msg.headers) {
