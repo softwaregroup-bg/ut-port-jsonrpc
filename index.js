@@ -42,11 +42,13 @@ module.exports = function(...params) {
             send: function(msg, $meta) {
                 let result = {
                     uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                    httpMethod: (msg && msg.httpMethod) || 'POST',
+                    headers: (msg && msg.headers),
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
                         method: $meta.method,
-                        params: msg
+                        params: Object.assign({}, msg)
                     }
                 };
                 if (msg && msg.headers) {
@@ -55,6 +57,9 @@ module.exports = function(...params) {
                 }
                 if (result.payload.params && result.payload.params.uri) {
                     delete result.payload.params.uri;
+                }
+                if (result.payload.params && result.payload.params.httpMethod) {
+                    delete result.payload.params.httpMethod;
                 }
                 return result;
             }
