@@ -1,23 +1,18 @@
-var utError = require('ut-error');
-var create = utError.define;
+'use strict';
+module.exports = (create, get) => {
+    const RPC = create('portJsonRPC');
+    const Generic = create('generic', RPC);
+    const plainError = cause => Object.assign(new Generic(), cause);
 
-var RPC = create('PortRPC');
-var Generic = create('Generic', RPC);
-var WrongJsonRpcFormat = create('WrongJsonRpcFormat', RPC);
-var plainError = cause => Object.assign(new Generic(), cause);
-
-module.exports = {
-    rpc: function(cause) {
-        var error = RPC;
-        if (cause && cause.type) {
-            error = utError.get(cause.type) || plainError;
-        }
-        return error(cause);
-    },
-    generic: function(cause) {
-        return new Generic(cause);
-    },
-    wrongJsonRpcFormat: function(cause) {
-        return new WrongJsonRpcFormat(cause);
-    }
+    return {
+        rpc: function(cause) {
+            let error = RPC;
+            if (cause && cause.type) {
+                error = get(cause.type) || plainError;
+            }
+            return error(cause);
+        },
+        generic: Generic,
+        wrongJsonRpcFormat: create('wrongJsonRpcFormat', RPC)
+    };
 };

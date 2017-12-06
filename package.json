@@ -1,17 +1,13 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "5.6.12",
+  "version": "6.0.0-ut6.4",
   "main": "./index.js",
   "dependencies": {
-    "ut-error": "^5.4.0",
+    "ut-port-http": "^7.0.0-ut6.0",
     "lodash.merge": "4.6.0"
   },
   "devDependencies": {
-    "ut-port-http": "^6.4.1",
-    "ut-tools": "^5.13.5"
-  },
-  "peerDependencies": {
-    "ut-bus": "^5.9.0"
+    "ut-tools": "^5.23.2"
   },
   "description": "UT port rpc module",
   "scripts": {
