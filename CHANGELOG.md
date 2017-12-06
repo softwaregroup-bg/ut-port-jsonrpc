@@ -1,3 +1,13 @@
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.12...v6.0.0) (2017-12-06)
+
+
+### Bug Fixes
+
+* decouple from ut-bus ([7e0c339](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/7e0c339))
+
+
+
 <a name="5.6.12"></a>
 ## [5.6.12](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.11...v5.6.12) (2017-06-08)
 
