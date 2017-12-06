@@ -1,3 +1,13 @@
+<a name="6.0.1"></a>
+## [6.0.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.0.0...v6.0.1) (2017-12-06)
+
+
+### Bug Fixes
+
+* handle falsy params ([4eb7d58](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/4eb7d58))
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v5.6.12...v6.0.0) (2017-12-06)
 
