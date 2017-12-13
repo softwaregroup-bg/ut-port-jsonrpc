@@ -1,3 +1,13 @@
+<a name="6.0.2"></a>
+## [6.0.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.0.1...v6.0.2) (2017-12-13)
+
+
+### Bug Fixes
+
+* do not overwrite port id ([32bae21](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/32bae21))
+
+
+
 <a name="6.0.1"></a>
 ## [6.0.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.0.0...v6.0.1) (2017-12-06)
 
