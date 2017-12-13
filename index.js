@@ -13,7 +13,6 @@ module.exports = function(...params) {
         let requestId = 1;
 
         this.config = merge(this.config, {
-            id: 'jsonrpc',
             url: global.window && global.window.location.origin,
             raw: {
                 json: true,
