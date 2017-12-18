@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "6.0.2",
+  "version": "6.1.0-rc-bahur.0",
   "main": "./index.js",
   "dependencies": {
     "ut-port-http": "^7.0.1",
@@ -10,7 +10,7 @@
     "ut-tools": "^5.30.0"
   },
   "peerDependencies": {
-    "ut-port":"^6.3.0"
+    "ut-port": "^6.3.0"
   },
   "description": "UT port rpc module",
   "scripts": {
