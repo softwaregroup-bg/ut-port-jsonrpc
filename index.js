@@ -21,6 +21,7 @@ module.exports = function(...params) {
             },
             parseResponse: false,
             requestTimeout: 300000,
+            minLatency: 100,
             receive: function(msg, $meta) {
                 if ($meta.mtid === 'error') {
                     return msg;
@@ -39,14 +40,18 @@ module.exports = function(...params) {
                 throw errors.generic(msg);
             },
             send: function(msg, $meta) {
+                let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
+                if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                 let result = {
                     uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                     httpMethod: (msg && msg.httpMethod) || 'POST',
                     headers: (msg && msg.headers),
+                    requestTimeout: timeout,
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
                         method: $meta.method,
+                        timeout: timeout && (timeout - this.config.minLatency),
                         params: msg && Object.assign({}, msg)
                     }
                 };
