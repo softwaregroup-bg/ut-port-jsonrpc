@@ -3,11 +3,14 @@
   "version": "6.0.2",
   "main": "./index.js",
   "dependencies": {
-    "ut-port-http": "^7.0.0-ut6.0",
+    "ut-port-http": "^7.0.1",
     "lodash.merge": "4.6.0"
   },
   "devDependencies": {
-    "ut-tools": "^5.23.2"
+    "ut-tools": "^5.30.0"
+  },
+  "peerDependencies": {
+    "ut-port":"^6.3.0"
   },
   "description": "UT port rpc module",
   "scripts": {
