@@ -44,6 +44,8 @@ module.exports = function(...params) {
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                 let result = {
                     uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                    url: (msg && msg.url),
+                    withCredentials: (msg && msg.withCredentials),
                     httpMethod: (msg && msg.httpMethod) || 'POST',
                     headers: (msg && msg.headers),
                     requestTimeout: timeout,
