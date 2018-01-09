@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "6.1.0-rc-bahur.0",
+  "version": "6.1.0-rc-bahur.1",
   "main": "./index.js",
   "dependencies": {
     "ut-port-http": "^7.0.1",
