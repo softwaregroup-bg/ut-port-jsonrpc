@@ -54,7 +54,7 @@ module.exports = function(...params) {
                         jsonrpc: '2.0',
                         method: $meta.method,
                         timeout: timeout && (timeout - this.config.minLatency),
-                        params: msg && Object.assign({}, msg)
+                        params: (msg && !(msg instanceof Array) && Object.assign({}, msg)) || msg
                     }
                 };
                 if (msg && msg.headers) {
