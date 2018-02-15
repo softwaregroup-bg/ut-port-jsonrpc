@@ -9,7 +9,7 @@
     "ut-tools": "^5.30.0"
   },
   "peerDependencies": {
-    "ut-port": "^6.3.0",
+    "ut-port": "^6.4.6",
     "ut-port-http": "^7.1.0-rc-bahur.0"
   },
   "description": "UT port rpc module",
