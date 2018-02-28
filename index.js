@@ -42,7 +42,7 @@ module.exports = function(...params) {
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
-                let $http = msg.$http;
+                let $http = msg && msg.$http;
                 let result = {
                     uri: ($http && $http.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                     url: ($http && $http.url),
