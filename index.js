@@ -42,12 +42,13 @@ module.exports = function(...params) {
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
+                let $http = msg.$http;
                 let result = {
-                    uri: (msg && msg.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
-                    url: (msg && msg.url),
-                    withCredentials: (msg && msg.withCredentials),
-                    httpMethod: (msg && msg.httpMethod) || 'POST',
-                    headers: (msg && msg.headers),
+                    uri: ($http && $http.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                    url: ($http && $http.url),
+                    withCredentials: ($http && $http.withCredentials),
+                    httpMethod: ($http && $http.httpMethod) || 'POST',
+                    headers: ($http && $http.headers),
                     requestTimeout: timeout,
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
@@ -57,16 +58,7 @@ module.exports = function(...params) {
                         params: (msg && !(msg instanceof Array) && Object.assign({}, msg)) || msg
                     }
                 };
-                if (msg && msg.headers) {
-                    result.headers = msg.headers;
-                    delete result.payload.params.headers;
-                }
-                if (result.payload.params && result.payload.params.uri) {
-                    delete result.payload.params.uri;
-                }
-                if (result.payload.params && result.payload.params.httpMethod) {
-                    delete result.payload.params.httpMethod;
-                }
+                if ($http) delete result.payload.params.$http;
                 return result;
             }
         });
