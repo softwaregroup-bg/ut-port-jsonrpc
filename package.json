@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "6.1.0-rc-bahur.5",
+  "version": "6.1.0-rc-bahur.6",
   "main": "./index.js",
   "dependencies": {
     "lodash.merge": "4.6.0"
