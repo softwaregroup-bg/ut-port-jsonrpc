@@ -59,6 +59,9 @@ module.exports = function(...params) {
                     }
                 };
                 if ($http) delete result.payload.params.$http;
+                if (result.payload.params.headers) delete result.payload.params.headers;
+                if (result.payload.params.uri) delete result.payload.params.uri;
+                if (result.payload.params.httpMethod) delete result.payload.params.httpMethod;
                 return result;
             }
         });
