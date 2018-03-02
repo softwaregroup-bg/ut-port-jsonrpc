@@ -1,3 +1,20 @@
+<a name="6.1.0"></a>
+# [6.1.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.0.2...v6.1.0) (2018-03-02)
+
+
+### Bug Fixes
+
+* allow falsy param ([1edd41d](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/1edd41d))
+* dep ([149d42d](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/149d42d))
+* dependencies ([2ca59a9](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/2ca59a9))
+* handle array params ([f449bd8](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/f449bd8))
+* move http as peer dep ([418a28b](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/418a28b))
+* move http params under msg.$http ([9b39c36](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/9b39c36))
+* pass prop ([#18](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/18)) ([aa8b3d8](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/aa8b3d8))
+* pass timeout to server ([f050483](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/f050483))
+
+
+
 <a name="6.0.2"></a>
 ## [6.0.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.0.1...v6.0.2) (2017-12-13)
 
