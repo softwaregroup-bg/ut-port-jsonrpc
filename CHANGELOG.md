@@ -1,3 +1,13 @@
+<a name="6.1.2"></a>
+## [6.1.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.1.1...v6.1.2) (2018-03-04)
+
+
+### Bug Fixes
+
+* ea fix ([8af2dcb](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/8af2dcb))
+
+
+
 <a name="6.1.1"></a>
 ## [6.1.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.1.0...v6.1.1) (2018-03-02)
 
