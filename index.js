@@ -1,18 +1,21 @@
 'use strict';
 const HttpPort = require('ut-port-http');
 const util = require('util');
-const merge = require('lodash.merge');
-let errors;
+const errorsFactory = require('./errors');
 
 module.exports = function(...params) {
     let parent = HttpPort(...params);
 
     function JsonRpcPort() {
         parent && parent.apply(this, arguments);
-        errors = errors || require('./errors')(this.defineError, this.getError);
+        if (this.errors) {
+            Object.assign(this.errors, errorsFactory(this.defineError, this.getError));
+        } else {
+            this.errors = errorsFactory(this.defineError, this.getError);
+        }
         let requestId = 1;
 
-        this.config = merge(this.config, {
+        this.config = this.merge(this.config, {
             url: global.window && global.window.location.origin,
             raw: {
                 json: true,
@@ -33,11 +36,11 @@ module.exports = function(...params) {
                         }
                         return msg.payload.result;
                     } else if (typeof msg.payload.error === 'object') {
-                        throw errors.rpc(msg.payload.error);
+                        throw this.errors.rpc(msg.payload.error);
                     }
-                    throw errors.wrongJsonRpcFormat(msg);
+                    throw this.errors.wrongJsonRpcFormat(msg);
                 }
-                throw errors.generic(msg);
+                throw this.errors.generic(msg);
             },
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
