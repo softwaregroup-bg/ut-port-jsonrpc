@@ -11,7 +11,10 @@ module.exports = function(...params) {
         parent && parent.apply(this, arguments);
         errors = errors || require('./errors')(this.defineError, this.getError);
         let requestId = 1;
-
+        let conversions = {
+            send: this.config.send,
+            receive: this.config.receive
+        };
         this.config = merge(this.config, {
             url: global.window && global.window.location.origin,
             raw: {
@@ -59,6 +62,9 @@ module.exports = function(...params) {
                     }
                 };
                 if ($http) delete result.payload.params.$http;
+                if (typeof conversions.send === 'function') {
+                    return Promise.resolve().then(() => conversions.send(result, $meta));
+                }
                 return result;
             }
         });
