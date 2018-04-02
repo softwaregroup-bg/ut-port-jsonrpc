@@ -43,7 +43,6 @@ module.exports = function(...params) {
                 throw errors.generic(msg);
             },
             send: function(msg, $meta) {
-                debugger;
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                 let $http = msg && msg.$http;
@@ -64,7 +63,6 @@ module.exports = function(...params) {
                 };
                 if ($http) delete result.payload.params.$http;
                 if (typeof conversions.send === 'function') {
-                    debugger;
                     return Promise.resolve().then(() => conversions.send.call(this, result, $meta));
                 }
                 return result;
