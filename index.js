@@ -51,7 +51,6 @@ module.exports = function(...params) {
                     headers: ($http && $http.headers),
                     requestTimeout: timeout,
                     blob: ($http && $http.blob),
-                    download: ($http && $http.download),
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
