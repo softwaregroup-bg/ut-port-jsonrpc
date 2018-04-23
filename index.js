@@ -50,6 +50,7 @@ module.exports = function(...params) {
                     httpMethod: ($http && $http.httpMethod) || 'POST',
                     headers: ($http && $http.headers),
                     requestTimeout: timeout,
+                    blob: ($http && $http.blob),
                     payload: {
                         id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
