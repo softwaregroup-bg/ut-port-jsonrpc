@@ -7,5 +7,4 @@ module.exports = (bus) => {
         defineError('wrongJsonRpcFormat', RPC);
     }
     return fetchErrors('portJsonRPC');
-
 };
