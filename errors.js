@@ -1,18 +1,11 @@
 'use strict';
-module.exports = (create, get) => {
-    const RPC = create('portJsonRPC');
-    const Generic = create('generic', RPC);
-    const plainError = cause => Object.assign(new Generic(), cause);
+module.exports = (bus) => {
+    let {defineError, getError, fetchErrors} = bus.errors;
+    if (!getError('portJsonRPC')) {
+        const RPC = defineError('portJsonRPC');
+        defineError('generic', RPC);
+        defineError('wrongJsonRpcFormat', RPC);
+    }
+    return fetchErrors('portJsonRPC');
 
-    return {
-        rpc: function(cause) {
-            let error = RPC;
-            if (cause && cause.type) {
-                error = get(cause.type) || plainError;
-            }
-            return error(cause);
-        },
-        generic: Generic,
-        wrongJsonRpcFormat: create('wrongJsonRpcFormat', RPC)
-    };
 };

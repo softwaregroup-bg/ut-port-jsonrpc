@@ -8,11 +8,7 @@ module.exports = function(...params) {
 
     function JsonRpcPort() {
         parent && parent.apply(this, arguments);
-        if (this.errors) {
-            Object.assign(this.errors, errorsFactory(this.defineError, this.getError));
-        } else {
-            this.errors = errorsFactory(this.defineError, this.getError);
-        }
+        Object.assign(this.errors, errorsFactory(this.bus));
         let requestId = 1;
 
         this.config = this.merge(this.config, {
@@ -36,11 +32,18 @@ module.exports = function(...params) {
                         }
                         return msg.payload.result;
                     } else if (typeof msg.payload.error === 'object') {
-                        throw this.errors.rpc(msg.payload.error);
+                        if (msg.payload.error.type) {
+                            let localError = this.getError(msg.payload.error.type);
+                            if (localError) {
+                                throw localError(msg.payload.error);
+                            }
+                            throw Object.assign(this.errors['portJsonRPC.generic'](), msg.payload.error);
+                        }
+                        throw this.errors.portJsonRPC(msg.payload.error);
                     }
-                    throw this.errors.wrongJsonRpcFormat(msg);
+                    throw this.errors['portJsonRPC.wrongJsonRpcFormat'](msg);
                 }
-                throw this.errors.generic(msg);
+                throw this.errors['portJsonRPC.generic'](msg);
             },
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
