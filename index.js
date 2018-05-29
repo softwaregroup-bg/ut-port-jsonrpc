@@ -37,13 +37,13 @@ module.exports = function(...params) {
                             if (localError) {
                                 throw localError(msg.payload.error);
                             }
-                            throw Object.assign(this.errors['portJsonRPC.generic'](), msg.payload.error);
+                            throw Object.assign(this.errors.portJsonRPC(), msg.payload.error);
                         }
                         throw this.errors.portJsonRPC(msg.payload.error);
                     }
-                    throw this.errors['portJsonRPC.wrongJsonRpcFormat'](msg);
+                    throw this.errors['portJsonRPC.wrongFormat'](msg);
                 }
-                throw this.errors['portJsonRPC.generic'](msg);
+                throw this.errors.portJsonRPC(msg);
             },
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
