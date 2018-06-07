@@ -1,3 +1,13 @@
+<a name="6.2.0"></a>
+# [6.2.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.1.2...v6.2.0) (2018-06-07)
+
+
+### Features
+
+* blob type response ([#22](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/22)) ([01d50ac](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/01d50ac))
+
+
+
 <a name="6.1.2"></a>
 ## [6.1.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.1.1...v6.1.2) (2018-03-04)
 
