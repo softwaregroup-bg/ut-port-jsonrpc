@@ -40,7 +40,7 @@ module.exports = function(...params) {
                 throw errors.generic(msg);
             },
             send: function(msg, $meta) {
-                let timeout = $meta.timeout && this.timing && this.timing.diff(this.timing.now(), $meta.timeout);
+                let timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                 let $http = msg && msg.$http;
                 let result = {
