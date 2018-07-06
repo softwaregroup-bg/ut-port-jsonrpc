@@ -52,13 +52,16 @@ module.exports = function(...params) {
                     requestTimeout: timeout,
                     blob: ($http && $http.blob),
                     payload: {
-                        id: ($meta.mtid === 'request') ? requestId++ : null,
                         jsonrpc: '2.0',
                         method: $meta.method,
                         timeout: timeout && (timeout - this.config.minLatency),
                         params: (msg && !(msg instanceof Array) && Object.assign({}, msg)) || msg
                     }
                 };
+
+                if ($http.mtid !== 'notification' && $meta.mtid === 'request') {
+                    result.payload.id = requestId++;
+                }
                 if ($http) delete result.payload.params.$http;
                 return result;
             }
