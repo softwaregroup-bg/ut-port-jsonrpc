@@ -42,15 +42,15 @@ module.exports = function(...params) {
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                 if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
-                let $http = msg && msg.$http;
+                let $http = (msg && msg.$http) || {};
                 let result = {
-                    uri: ($http && $http.uri) || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
-                    url: ($http && $http.url),
-                    withCredentials: ($http && $http.withCredentials),
-                    httpMethod: ($http && $http.httpMethod) || 'POST',
-                    headers: ($http && $http.headers),
+                    uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
+                    url: $http.url,
+                    withCredentials: $http.withCredentials,
+                    httpMethod: $http.httpMethod || 'POST',
+                    headers: $http.headers,
                     requestTimeout: timeout,
-                    blob: ($http && $http.blob),
+                    blob: $http.blob,
                     payload: {
                         jsonrpc: '2.0',
                         method: $meta.method,
