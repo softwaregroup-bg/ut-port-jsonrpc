@@ -1,3 +1,13 @@
+<a name="6.3.1"></a>
+## [6.3.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.0...v6.3.1) (2018-10-11)
+
+
+### Bug Fixes
+
+* refactor errors ([855afde](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/855afde))
+
+
+
 <a name="6.3.0"></a>
 # [6.3.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.0-rc-einstein.1...v6.3.0) (2018-08-02)
 
