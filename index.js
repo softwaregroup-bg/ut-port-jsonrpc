@@ -9,7 +9,7 @@ module.exports = function(...params) {
 
     function JsonRpcPort() {
         parent && parent.apply(this, arguments);
-        errors = errors || require('./errors')(this.defineError, this.getError);
+        errors = errors || require('./errors')(this.errors);
         let requestId = 1;
 
         this.config = merge(this.config, {
