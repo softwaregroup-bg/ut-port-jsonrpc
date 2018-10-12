@@ -2,14 +2,15 @@
 const HttpPort = require('ut-port-http');
 const util = require('util');
 const merge = require('lodash.merge');
-let errors;
 
 module.exports = function(...params) {
     let parent = HttpPort(...params);
+    let jsonRpcPortErrors;
 
     function JsonRpcPort() {
         parent && parent.apply(this, arguments);
-        errors = errors || require('./errors')(this.defineError, this.getError);
+        if (!this.errors || !this.errors.getError) throw new Error('Please use the latest version of ut-port');
+        jsonRpcPortErrors = jsonRpcPortErrors || require('./errors')(this.errors);
         let requestId = 1;
 
         this.config = merge(this.config, {
@@ -33,11 +34,11 @@ module.exports = function(...params) {
                         }
                         return msg.payload.result;
                     } else if (typeof msg.payload.error === 'object') {
-                        throw errors.rpc(msg.payload.error);
+                        throw jsonRpcPortErrors.rpc(msg.payload.error);
                     }
-                    throw errors.wrongJsonRpcFormat(msg);
+                    throw jsonRpcPortErrors.wrongJsonRpcFormat(msg);
                 }
-                throw errors.generic(msg);
+                throw jsonRpcPortErrors.generic(msg);
             },
             send: function(msg, $meta) {
                 let timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
