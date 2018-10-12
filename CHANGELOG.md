@@ -1,3 +1,8 @@
+<a name="6.3.2"></a>
+## [6.3.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.1...v6.3.2) (2018-10-12)
+
+
+
 <a name="6.3.1"></a>
 ## [6.3.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.0...v6.3.1) (2018-10-11)
 
