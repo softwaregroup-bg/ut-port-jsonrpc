@@ -3,14 +3,14 @@
   "version": "6.4.0-rc-godfather.0",
   "main": "./index.js",
   "dependencies": {
-    "lodash.merge": "4.6.0"
+    "lodash.merge": "4.6.1"
   },
   "devDependencies": {
-    "ut-tools": "^5.30.0"
+    "ut-tools": "^6.3.4"
   },
   "peerDependencies": {
-    "ut-port": "^6.4.6",
-    "ut-port-http": "^7.1.0-rc-bahur.0"
+    "ut-port": "^6.6.0",
+    "ut-port-http": "^7.3.0"
   },
   "description": "UT port rpc module",
   "scripts": {
