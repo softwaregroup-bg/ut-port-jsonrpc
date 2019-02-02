@@ -1,3 +1,22 @@
+# [7.0.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.2...v7.0.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* errors ([#28](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/28)) ([67f9ca3](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/67f9ca3))
+* refactor as class ([#27](https://github.com/softwaregroup-bg/ut-port-jsonrpc/issues/27)) ([59c4b37](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/59c4b37))
+* refactor errors ([cd83386](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/cd83386))
+* remove unused dependency ([e4f6ae8](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/e4f6ae8))
+* upgrade dependencies ([98224fe](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/98224fe))
+* upgrade ut-tools ([984951d](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/984951d))
+
+
+### BREAKING CHANGES
+
+* requires upgrade of ut-port and ut-run
+
+
+
 <a name="6.3.2"></a>
 ## [6.3.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.1...v6.3.2) (2018-10-12)
 

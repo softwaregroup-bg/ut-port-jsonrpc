@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "6.4.0-rc-godfather.4",
+  "version": "7.0.0",
   "main": "./index.js",
   "devDependencies": {
     "ut-tools": "^6.8.10"
