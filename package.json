@@ -3,11 +3,11 @@
   "version": "6.4.0-rc-godfather.4",
   "main": "./index.js",
   "devDependencies": {
-    "ut-tools": "^6.3.4"
+    "ut-tools": "^6.8.10"
   },
   "peerDependencies": {
-    "ut-port": "^6.6.0",
-    "ut-port-http": "^7.3.0"
+    "ut-port": "^6.8.1",
+    "ut-port-http": "^8.0.0"
   },
   "description": "UT port rpc module",
   "scripts": {
