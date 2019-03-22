@@ -1,3 +1,7 @@
+## [7.0.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.0.0...v7.0.1) (2019-03-22)
+
+
+
 # [7.0.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v6.3.2...v7.0.0) (2019-02-02)
 
 
