@@ -1,3 +1,12 @@
+# [7.1.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.0.2...v7.1.0) (2020-03-15)
+
+
+### Features
+
+* preserve error type of http errors ([0313508](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/03135081e84e251b2f608ab50d03adaf54076657))
+
+
+
 ## [7.0.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.0.1...v7.0.2) (2020-01-17)
 
 
