@@ -11,6 +11,7 @@ module.exports = function(...params) {
             jsonRpcPortErrors = jsonRpcPortErrors || require('./errors')(this.errors);
             this.requestId = 1;
         }
+
         get defaults() {
             return {
                 url: global.window && global.window.location.origin,
@@ -24,10 +25,12 @@ module.exports = function(...params) {
                 minLatency: 100
             };
         }
+
         handlers() {
             return {
                 receive: (msg, $meta) => {
                     if ($meta.mtid === 'error') {
+                        if (msg && msg.body && msg.body.error && msg.body.error.type) throw jsonRpcPortErrors.rpc(msg.body.error);
                         return msg;
                     }
                     if (msg && msg.payload) {
@@ -44,10 +47,10 @@ module.exports = function(...params) {
                     throw jsonRpcPortErrors.generic(msg);
                 },
                 send: (msg, $meta) => {
-                    let timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
+                    const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
-                    let $http = (msg && msg.$http) || {};
-                    let result = {
+                    const $http = (msg && msg.$http) || {};
+                    const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
                         withCredentials: $http.withCredentials,
