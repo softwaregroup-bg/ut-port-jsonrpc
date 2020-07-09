@@ -7,8 +7,8 @@
     "ut-tools": "^6.33.4"
   },
   "peerDependencies": {
-    "ut-port": "^6.8.1",
-    "ut-port-http": "^8.0.0"
+    "ut-run": "^10.26.2",
+    "ut-port-http": "^8.5.0"
   },
   "description": "UT port rpc module",
   "scripts": {
