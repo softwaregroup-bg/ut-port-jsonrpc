@@ -1,3 +1,12 @@
+## [7.1.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.1.1...v7.1.2) (2020-07-16)
+
+
+### Bug Fixes
+
+* preserve received error message ([a378ddb](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/a378ddb4bc07796888bbfe8290c1edf17234fe46))
+
+
+
 ## [7.1.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.1.0...v7.1.1) (2020-07-09)
 
 
