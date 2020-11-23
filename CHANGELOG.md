@@ -1,3 +1,12 @@
+# [7.2.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.1.2...v7.2.0) (2020-11-23)
+
+
+### Features
+
+* FormData upload ([2585c72](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/2585c722105fb4857f979d1e290904bc8d222ab2))
+
+
+
 ## [7.1.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.1.1...v7.1.2) (2020-07-16)
 
 
