@@ -34,7 +34,9 @@ module.exports = function(...params) {
                         return msg;
                     }
                     if (msg && msg.payload) {
-                        if (msg.payload.result !== undefined && msg.payload.error === undefined) {
+                        if (!msg.payload.jsonrpc) {
+                            return msg.payload;
+                        } else if (msg.payload.result !== undefined && msg.payload.error === undefined) {
                             if (msg.payload.id == null) {
                                 $meta.mtid = 'discard';
                             }
@@ -50,6 +52,7 @@ module.exports = function(...params) {
                     const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                     const $http = (msg && msg.$http) || {};
+                    const isFormData = msg && msg.formData instanceof window.FormData;
                     const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
@@ -58,7 +61,7 @@ module.exports = function(...params) {
                         headers: $http.headers,
                         requestTimeout: timeout,
                         blob: $http.blob,
-                        payload: {
+                        payload: isFormData ? msg.formData : {
                             jsonrpc: '2.0',
                             method: $meta.method,
                             timeout: timeout && (timeout - this.config.minLatency),
@@ -66,10 +69,10 @@ module.exports = function(...params) {
                         }
                     };
 
-                    if ($http.mtid !== 'notification' && $meta.mtid === 'request') {
+                    if (!isFormData && $http.mtid !== 'notification' && $meta.mtid === 'request') {
                         result.payload.id = this.requestId++;
                     }
-                    if ($http) delete result.payload.params.$http;
+                    if (!isFormData && $http) delete result.payload.params.$http;
                     return result;
                 }
             };
