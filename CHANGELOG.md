@@ -1,3 +1,12 @@
+## [7.2.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.2.0...v7.2.1) (2020-11-23)
+
+
+### Bug Fixes
+
+* check global.window ([8134a46](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/8134a46f5e1c0985e5a783089481bc1355ef9db1))
+
+
+
 # [7.2.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.1.2...v7.2.0) (2020-11-23)
 
 

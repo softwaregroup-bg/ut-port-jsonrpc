@@ -1,6 +1,6 @@
 {
   "name": "ut-port-jsonrpc",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "main": "./index.js",
   "devDependencies": {
     "tap": "^12.6.0",
