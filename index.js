@@ -52,7 +52,7 @@ module.exports = function(...params) {
                     const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                     const $http = (msg && msg.$http) || {};
-                    const isFormData = msg && msg.formData instanceof window.FormData;
+                    const isFormData = global.window && msg && msg.formData instanceof window.FormData;
                     const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
