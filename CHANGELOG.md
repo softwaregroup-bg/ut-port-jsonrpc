@@ -1,3 +1,12 @@
+# [7.3.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.2.1...v7.3.0) (2021-03-22)
+
+
+### Features
+
+* return $meta.calls and $meta.validation ([84ef8a0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/84ef8a0c04499827808912ef46befc07b6a50153))
+
+
+
 ## [7.2.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.2.0...v7.2.1) (2020-11-23)
 
 
