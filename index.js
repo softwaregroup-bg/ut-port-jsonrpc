@@ -40,6 +40,10 @@ module.exports = function(...params) {
                             if (msg.payload.id == null) {
                                 $meta.mtid = 'discard';
                             }
+                            if (msg.payload.$meta) {
+                                const {validation, calls} = msg.payload.$meta;
+                                Object.assign($meta, {validation, calls});
+                            }
                             return msg.payload.result;
                         } else if (typeof msg.payload.error === 'object') {
                             throw jsonRpcPortErrors.rpc(msg.payload.error);
