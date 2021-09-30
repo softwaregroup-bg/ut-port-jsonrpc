@@ -30,7 +30,13 @@ module.exports = function(...params) {
             return {
                 receive: (msg, $meta) => {
                     if ($meta.mtid === 'error') {
-                        if (msg && msg.body && msg.body.error && msg.body.error.type) throw jsonRpcPortErrors.rpc(msg.body.error);
+                        if (msg && msg.body && msg.body.error && msg.body.error.type) {
+                            const Error = jsonRpcPortErrors.rpc(msg.body.error);
+                            Error.statusCode = msg.statusCode;
+                            Error.statusText = msg.statusText;
+                            Error.statusMessage = msg.statusMessage;
+                            throw Error;
+                        }
                         return msg;
                     }
                     if (msg && msg.payload) {
