@@ -4,6 +4,7 @@
   "main": "./index.js",
   "devDependencies": {
     "tap": "^15.0.10",
+    "ut-port-http": "^8.9.0",
     "ut-tools": "^6.39.0"
   },
   "peerDependencies": {
