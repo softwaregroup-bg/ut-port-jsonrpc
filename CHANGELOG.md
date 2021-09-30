@@ -1,3 +1,12 @@
+## [7.3.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.3.0...v7.3.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* pass statusCode ([a36f32e](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/a36f32e3fecac546659e4f61e7a995a5b82f58a4))
+
+
+
 # [7.3.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.2.1...v7.3.0) (2021-03-22)
 
 
