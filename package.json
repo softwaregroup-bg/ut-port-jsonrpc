@@ -3,12 +3,12 @@
   "version": "7.3.0",
   "main": "./index.js",
   "devDependencies": {
-    "tap": "^12.6.0",
-    "ut-tools": "^6.33.4"
+    "tap": "^15.0.10",
+    "ut-tools": "^6.39.0"
   },
   "peerDependencies": {
     "ut-run": "^10.26.2",
-    "ut-port-http": "^8.5.0"
+    "ut-port-http": "^8.9.0"
   },
   "description": "UT port rpc module",
   "scripts": {
