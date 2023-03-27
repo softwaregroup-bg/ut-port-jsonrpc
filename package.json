@@ -3,13 +3,10 @@
   "version": "7.3.1",
   "main": "./index.js",
   "devDependencies": {
-    "form-data": "^2.5.1",
-    "tap": "^15.0.10",
-    "ut-port-http": "^8.9.0",
-    "ut-tools": "^6.39.0"
+    "tap": "^16.3.0",
+    "ut-port-http": "^8.9.0"
   },
   "peerDependencies": {
-    "form-data": "^2.5.1",
     "ut-run": "^10.26.2",
     "ut-port-http": "^8.9.0"
   },

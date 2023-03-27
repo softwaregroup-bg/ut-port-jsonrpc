@@ -1,6 +1,5 @@
 'use strict';
 const HttpPort = require('ut-port-http');
-const FormData = require('form-data');
 
 module.exports = function(...params) {
     let jsonRpcPortErrors;
@@ -63,7 +62,13 @@ module.exports = function(...params) {
                     const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                     const $http = (msg && msg.$http) || {};
-                    const isFormData = msg && msg.formData && msg.formData instanceof FormData;
+
+                    const isFormData = msg && msg.formData && (
+                        global.window
+                            ? msg.formData instanceof window.FormData
+                            : msg.formData.constructor.name === 'FormData'
+                    );
+
                     const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
