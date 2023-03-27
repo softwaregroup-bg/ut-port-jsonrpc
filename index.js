@@ -1,5 +1,6 @@
 'use strict';
 const HttpPort = require('ut-port-http');
+const FormData = require('form-data');
 
 module.exports = function(...params) {
     let jsonRpcPortErrors;
@@ -62,7 +63,7 @@ module.exports = function(...params) {
                     const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                     const $http = (msg && msg.$http) || {};
-                    const isFormData = msg && msg.formData && (!global.window || msg.formData instanceof window.FormData);
+                    const isFormData = msg && msg.formData && msg.formData instanceof FormData;
                     const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
@@ -71,17 +72,18 @@ module.exports = function(...params) {
                         headers: $http.headers,
                         requestTimeout: timeout,
                         blob: $http.blob,
-                        payload: isFormData
+                        ...isFormData
                             ? global.window
-                                ? msg.formData // frontend multipart/form-data request
-                                : undefined
+                                ? {payload: msg.formData}
+                                : {formData: msg.formData}
                             : {
-                                jsonrpc: '2.0',
-                                method: $meta.method,
-                                timeout: timeout && (timeout - this.config.minLatency),
-                                params: (msg && !(msg instanceof Array) && Object.assign({}, msg)) || msg
-                            },
-                        formData: !global.window && msg.formData // backend multipart/form-data request
+                                payload: {
+                                    jsonrpc: '2.0',
+                                    method: $meta.method,
+                                    timeout: timeout && (timeout - this.config.minLatency),
+                                    params: (msg && !(msg instanceof Array) && Object.assign({}, msg)) || msg
+                                }
+                            }
                     };
 
                     if (!isFormData && $http.mtid !== 'notification' && $meta.mtid === 'request') {
