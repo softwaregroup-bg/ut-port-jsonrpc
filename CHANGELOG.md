@@ -1,3 +1,14 @@
+## [7.3.2](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.3.1...v7.3.2) (2023-03-27)
+
+
+### Bug Fixes
+
+* backend form-data request ([3c4b531](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/3c4b531dd286dd52fde5c7e8927bb0921b96fc05))
+* check whether msg.formData is instance of FormData ([ecc0595](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/ecc0595d779de223e9a3389a44063ae4ce7c0fab))
+* remove form-data dependency ([8e8a718](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/8e8a71850f2582cbc3250877188594bc3c391697))
+
+
+
 ## [7.3.1](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.3.0...v7.3.1) (2021-09-30)
 
 
