@@ -66,7 +66,7 @@ module.exports = function(...params) {
                     const isFormData = msg && msg.formData && (
                         global.window
                             ? msg.formData instanceof window.FormData
-                            : msg.formData.constructor.name === 'FormData'
+                            : msg.formData.constructor === Object
                     );
 
                     const result = {
