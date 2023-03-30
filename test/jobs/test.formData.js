@@ -10,7 +10,7 @@ module.exports = function test() {
                             uri: '/rpc/server/request/formData'
                         },
                         formData: {
-                            pkg: path.join(__dirname, '..', '..', 'package.json')
+                            pkg: require('fs').createReadStream(path.join(__dirname, '..', '..', 'package.json'))
                         }
                     },
                     result: (result, assert) => {

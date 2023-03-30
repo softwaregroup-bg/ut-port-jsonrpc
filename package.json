@@ -8,6 +8,7 @@
     "ut-run": "^10.26.2"
   },
   "peerDependencies": {
+    "request": "2.88.0",
     "ut-run": "^10.26.2",
     "ut-port-http": "^8.9.0"
   },
@@ -31,6 +32,9 @@
     "version": "ut-version",
     "jenkins": "ut-jenkins",
     "gitlab": "ut-gitlab"
+  },
+  "browser": {
+    "request": false
   },
   "repository": {
     "type": "git",

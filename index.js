@@ -1,38 +1,38 @@
 'use strict';
 const HttpPort = require('ut-port-http');
-const path = require('path');
-const fs = require('fs');
-const isAbsolutePath = str => typeof str === 'string' && path.isAbsolute(str);
-const formData = obj => Object.entries(obj).reduce((all, [key, value]) => {
-    if (isAbsolutePath(value)) {
-        value = fs.createReadStream(value);
-    } else if (Array.isArray(value)) {
-        value = value.map(v => isAbsolutePath(v) ? fs.createReadStream(v) : v);
-    } else if (typeof value === 'object') {
-        if (isAbsolutePath(value.value)) {
-            value.value = fs.createReadStream(value.value);
-        } else if (!value.value) {
-            value = {
-                value: Buffer.from(JSON.stringify(value)),
-                options: {
-                    filename: key + '.json',
-                    contentType: 'application/json'
-                }
-            };
-        } else if (value.value.constructor === Object) {
-            value = {
-                value: Buffer.from(JSON.stringify(value.value)),
-                options: {
-                    filename: key + '.json',
-                    contentType: 'application/json',
-                    ...value.options
-                }
-            };
+const formData = obj => {
+    const request = require('request');
+    return Object.entries(obj).reduce((all, [key, value]) => {
+        if (value?.$remoteStream) {
+            value = request(value.$remoteStream);
+        } else if (Array.isArray(value)) {
+            value = value.map(v => v?.$remoteStream ? request(v.$remoteStream) : v);
+        } else if (typeof value === 'object') {
+            if (value.value?.$remoteStream) {
+                value.value = request(value.value.$remoteStream);
+            } else if (!value.value) {
+                value = {
+                    value: Buffer.from(JSON.stringify(value)),
+                    options: {
+                        filename: key + '.json',
+                        contentType: 'application/json'
+                    }
+                };
+            } else if (value.value.constructor === Object) {
+                value = {
+                    value: Buffer.from(JSON.stringify(value.value)),
+                    options: {
+                        filename: key + '.json',
+                        contentType: 'application/json',
+                        ...value.options
+                    }
+                };
+            }
         }
-    }
-    all[key] = value;
-    return all;
-}, {});
+        all[key] = value;
+        return all;
+    }, {});
+};
 
 module.exports = function(...params) {
     let jsonRpcPortErrors;
