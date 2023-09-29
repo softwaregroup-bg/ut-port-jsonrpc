@@ -1,5 +1,6 @@
-const tap = require('tap');
-
-tap.test('require', async(assert) => {
-    assert.ok(require('.'), 'require');
+require('ut-run').run({
+    method: 'unit',
+    version: require('./package.json').version,
+    root: __dirname,
+    resolve: require.resolve
 });

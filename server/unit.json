@@ -1,0 +1,20 @@
+{
+    "test": true,
+    "utBus": {
+        "serviceBus": {
+            "jsonrpc": {
+                "port": 8765
+            }
+        }
+    },
+    "utRun": {
+        "test": {
+            "jobs": "test"
+        }
+    },
+    "JsonRpcPort": {
+        "url": "http://localhost:8765",
+        "namespace": ["server", "client"],
+        "imports": ["server"]
+    }
+}
