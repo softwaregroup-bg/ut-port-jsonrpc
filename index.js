@@ -27,21 +27,26 @@ module.exports = function(...params) {
         }
 
         handlers() {
+            const formatResponse = (msg, responseHeaders) => {
+                if (responseHeaders) msg.responseHeaders = responseHeaders;
+                return msg;
+            };
             return {
                 receive: (msg, $meta) => {
+                    const responseHeaders = $meta.forward?.returnResponseHeaders && $meta?.response?.headers;
                     if ($meta.mtid === 'error') {
                         if (msg && msg.body && msg.body.error && msg.body.error.type) {
                             const Error = jsonRpcPortErrors.rpc(msg.body.error);
                             Error.statusCode = msg.statusCode;
                             Error.statusText = msg.statusText;
                             Error.statusMessage = msg.statusMessage;
-                            throw Error;
+                            throw formatResponse(Error, responseHeaders);
                         }
                         return msg;
                     }
                     if (msg && msg.payload) {
                         if (!msg.payload.jsonrpc) {
-                            return msg.payload;
+                            return formatResponse(msg.payload, responseHeaders);
                         } else if (msg.payload.result !== undefined && msg.payload.error === undefined) {
                             if (msg.payload.id == null) {
                                 $meta.mtid = 'discard';
@@ -50,7 +55,7 @@ module.exports = function(...params) {
                                 const {validation, calls} = msg.payload.$meta;
                                 Object.assign($meta, {validation, calls});
                             }
-                            return msg.payload.result;
+                            return formatResponse(msg.payload.result, responseHeaders);
                         } else if (typeof msg.payload.error === 'object') {
                             throw jsonRpcPortErrors.rpc(msg.payload.error);
                         }
@@ -62,13 +67,17 @@ module.exports = function(...params) {
                     const timeout = $meta.timeout && this.timing && Math.floor(this.timing.diff(this.timing.now(), $meta.timeout));
                     if (Number.isFinite(timeout) && timeout <= this.config.minLatency) throw this.errors.timeout();
                     const $http = (msg && msg.$http) || {};
-
                     const isFormData = msg && msg.formData && (
                         global.window
                             ? msg.formData instanceof window.FormData
                             : msg.formData.constructor.name === 'FormData'
                     );
-
+                    if ($http.returnResponseHeaders) {
+                        $meta.forward = {
+                            ...$meta.forward,
+                            returnResponseHeaders: $http.returnResponseHeaders
+                        };
+                    }
                     const result = {
                         uri: $http.uri || `/rpc/${$meta.method.replace(/\//ig, '%2F')}`,
                         url: $http.url,
