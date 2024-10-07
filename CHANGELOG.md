@@ -1,3 +1,12 @@
+# [7.4.0](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.3.3...v7.4.0) (2024-10-07)
+
+
+### Features
+
+* Return response headers based on explicit demand ([17dc000](https://github.com/softwaregroup-bg/ut-port-jsonrpc/commit/17dc000b7d7a5080464fc78e1cb9d4d2735c203d))
+
+
+
 ## [7.3.3](https://github.com/softwaregroup-bg/ut-port-jsonrpc/compare/v7.3.2...v7.3.3) (2023-09-29)
 
 
