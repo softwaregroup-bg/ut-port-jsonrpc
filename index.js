@@ -1,5 +1,38 @@
 'use strict';
 const HttpPort = require('ut-port-http');
+const formData = obj => {
+    const request = require('request');
+    return Object.entries(obj).reduce((all, [key, value]) => {
+        if (value?.$remoteStream) {
+            value = request(value.$remoteStream);
+        } else if (Array.isArray(value)) {
+            value = value.map(v => v?.$remoteStream ? request(v.$remoteStream) : v);
+        } else if (typeof value === 'object') {
+            if (value.value?.$remoteStream) {
+                value.value = request(value.value.$remoteStream);
+            } else if (!value.value) {
+                value = {
+                    value: Buffer.from(JSON.stringify(value)),
+                    options: {
+                        filename: key + '.json',
+                        contentType: 'application/json'
+                    }
+                };
+            } else if (value.value.constructor === Object) {
+                value = {
+                    value: Buffer.from(JSON.stringify(value.value)),
+                    options: {
+                        filename: key + '.json',
+                        contentType: 'application/json',
+                        ...value.options
+                    }
+                };
+            }
+        }
+        all[key] = value;
+        return all;
+    }, {});
+};
 
 module.exports = function(...params) {
     let jsonRpcPortErrors;
@@ -70,7 +103,7 @@ module.exports = function(...params) {
                     const isFormData = msg && msg.formData && (
                         global.window
                             ? msg.formData instanceof window.FormData
-                            : msg.formData.constructor.name === 'FormData'
+                            : msg.formData.constructor === Object
                     );
                     if ($http.returnResponseHeaders) {
                         $meta.forward = {
@@ -89,7 +122,7 @@ module.exports = function(...params) {
                         ...isFormData
                             ? global.window
                                 ? {payload: msg.formData}
-                                : {formData: msg.formData}
+                                : {formData: formData(msg.formData)}
                             : {
                                 payload: {
                                     jsonrpc: '2.0',
